@@ -5,7 +5,7 @@
 #define WIDTH 800
 #define HEIGHT 600
 
- GLFWwindow* create_window()
+GLFWwindow* create_window()
 {
 	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", NULL, NULL);
 	if (window == NULL)
@@ -21,6 +21,12 @@
 		throw std::runtime_error("failed loading gladloader");
 	}
 	return window;
+}
+
+void processInput(GLFWwindow *window)
+{
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE))
+        glfwSetWindowShouldClose(window, true);
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
@@ -40,6 +46,8 @@ int main()
 
 	while(!glfwWindowShouldClose(window))
 	{
+		processInput(window);
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
