@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <cmath>
 #include "shader.h"
+#include "rectangle.h"
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -35,6 +36,12 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
     glViewport(0, 0, width, height);
 }
+void APIENTRY DebugCallback(GLenum source, GLenum type, GLuint id, GLenum severity,
+                            GLsizei length, const GLchar* message, const void* userParam)
+{
+    // print debug message to console
+    std::cout << "OpenGL Debug: " << message << std::endl;
+}
 
 int main()
 {
@@ -48,46 +55,32 @@ int main()
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-	float vertices[] = {
-    -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
-	};
+	float time;
+	Rectangle rect(
+			glm::vec2(0.5f, 0.5f),
+			glm::vec2(0.5f, 0.5f),
+			glm::vec3(1.0f, 0.0f, 0.0f));
 
-	unsigned int VAO, VBO;
-
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-
-	glEnableVertexAttribArray(0);
-
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-	glBindVertexArray(0);
+	Rectangle rect2(
+			glm::vec2(-0.5f, -0.5f),
+			glm::vec2(0.5f, 0.5f),
+			glm::vec3(0.0f, 0.0f, 1.0f));
 
 	while(!glfwWindowShouldClose(window))
 	{
 		processInput(window);
+
+		glClear(GL_COLOR_BUFFER_BIT);
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+
 		shaderProgram.use();
 
-		float time = static_cast<float>(glfwGetTime());
+		rect.Render();
+		rect2.Render();
 
-		shaderProgram.setInt("y_ratio", -1);
-		shaderProgram.setFloat("time", .5 + sin(time));
-
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		glfwSwapBuffers(window);
+
 		glfwPollEvents();
 	}
 
