@@ -23,42 +23,54 @@ public:
 
         float halfSize = size / 2.0f;
         float vertices[] = {
-            // Front face
-            -halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-            -halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-            // Back face
+
             -halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
             -halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-            // Top face
+            -halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
+
+            -halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+            -halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+            -halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+
+            -halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
             -halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-            -halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-            // Bottom face
             -halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-            -halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-            // Right face
-             halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-             halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-            // Left face
             -halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
             -halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
             -halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
-            -halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b
+
+             halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize,  halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, -halfSize, -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, -halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize,  halfSize,  halfSize, m_Color.r, m_Color.g, m_Color.b,
+
+            -halfSize, -halfSize,  -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, -halfSize,  -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, -halfSize,   halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, -halfSize,   halfSize, m_Color.r, m_Color.g, m_Color.b,
+            -halfSize, -halfSize,   halfSize, m_Color.r, m_Color.g, m_Color.b,
+            -halfSize, -halfSize,  -halfSize, m_Color.r, m_Color.g, m_Color.b,
+
+            -halfSize, halfSize,  -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, halfSize,  -halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, halfSize,   halfSize, m_Color.r, m_Color.g, m_Color.b,
+             halfSize, halfSize,   halfSize, m_Color.r, m_Color.g, m_Color.b,
+            -halfSize, halfSize,   halfSize, m_Color.r, m_Color.g, m_Color.b,
+            -halfSize, halfSize,  -halfSize, m_Color.r, m_Color.g, m_Color.b
         };
         // Set up the vertex buffer object and vertex array object
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(1);
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	}
@@ -67,19 +79,13 @@ public:
         glDeleteBuffers(1, &m_VBO);
         glDeleteVertexArrays(1, &m_VAO);
     }
-    void Render(Shader* shader, float dt)
+    void Render()
     {
         // Bind VAO
         glBindVertexArray(m_VAO);
 
-
-		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::translate(model, m_Position);
-		model = glm::rotate(model, dt * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
-		shader->setMat4f("model", model);
-
         // Draw rectangle
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 36);
+        glDrawArrays(GL_TRIANGLES, 0, 36);
 
         // Unbind VAO
         glBindVertexArray(0);

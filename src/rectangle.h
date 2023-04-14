@@ -26,8 +26,8 @@ public:
 			m_Position.x, m_Position.y + m_Size.y,  m_Color.r, m_Color.g, m_Color.b,
 			m_Position.x + m_Size.x, m_Position.y,  m_Color.r, m_Color.g, m_Color.b,
 			m_Position.x + m_Size.x, m_Position.y + m_Size.y, m_Color.r, m_Color.g, m_Color.b
-};
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		};
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
         // Set vertex attributes
         glEnableVertexAttribArray(0);
