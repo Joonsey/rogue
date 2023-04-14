@@ -86,12 +86,12 @@ int main()
 			glm::vec3(1.0f, 0.0f, 0.0f));
 
 	Cube cube(
-			glm::vec3(-0.5f, -0.5f, 0.f),
+			glm::vec3(-0.5f, -0.5f, -1.f),
 			1.f,
 			glm::vec3(0.0f, 2.0f, 1.0f));
 
 	Cube cube2(
-			glm::vec3(0.5f, 0.5f, 0.f),
+			glm::vec3(0.5f, 0.5f, -1.f),
 			1.f,
 			glm::vec3(0.0f, 2.0f, 1.0f));
 
@@ -103,7 +103,7 @@ int main()
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		model = glm::rotate(model,  glm::radians(50.0f) / 20, glm::vec3(0.5f, 1.0f, 0.0f));
+		//model = glm::rotate(model,  glm::radians(50.0f) / 20, glm::vec3(0.5f, 1.0f, 0.0f));
 		shaderProgram.use();
 		shaderProgram.setMat4f("projection", proj);
 		shaderProgram.setMat4f("view", view);
