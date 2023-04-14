@@ -1,3 +1,3 @@
 
 main:
-	g++ src/*.c* -o main -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl
+	g++ src/*.c* -o dist -lglfw -lGL -lX11 -lpthread -lXrandr -lXi -ldl
