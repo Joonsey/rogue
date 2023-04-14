@@ -1,6 +1,7 @@
 #include "../include/glad/glad.h"
 #include <GLFW/glfw3.h>
 #include <stdexcept>
+#include <cmath>
 #include "shader.h"
 
 #define WIDTH 800
@@ -75,7 +76,10 @@ int main()
 		processInput(window);
 		shaderProgram.use();
 
+		float time = static_cast<float>(glfwGetTime());
+
 		shaderProgram.setInt("y_ratio", -1);
+		shaderProgram.setFloat("time", .5 + sin(time));
 
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
