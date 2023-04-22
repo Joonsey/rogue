@@ -31,9 +31,9 @@ int main()
 	glm::mat4 model = glm::rotate(glm::mat4(1.0f), glm::radians(-0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
 
-	Window window(WIDTH, HEIGHT, "rogue");
-	Shader shaderProgram = Shader("src/shaders/vertex.glsl","src/shaders/fragment.glsl");
-	Camera camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
+	window::Window window(WIDTH, HEIGHT, "rogue");
+	shader::Shader shaderProgram("src/shaders/vertex.glsl","src/shaders/fragment.glsl");
+	camera::Camera camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
 
 	window.set_resize_callback(framebuffer_size_callback);
 
