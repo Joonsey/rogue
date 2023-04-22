@@ -4,7 +4,6 @@
 #include <stdexcept>
 #include "camera.h"
 
-
 using namespace camera;
 
 namespace window {
@@ -82,7 +81,7 @@ namespace window {
 			float deltatime()
 			{
 				float new_time = static_cast<float>(glfwGetTime());
-				float deltatime = old_time - new_time;
+				float deltatime = new_time - old_time;
 				old_time = new_time;
 				return deltatime;
 			};

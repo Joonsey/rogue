@@ -33,13 +33,13 @@ namespace camera {
 		void processKeyboard(Camera_movement direction, float deltaTime) {
 			float velocity = m_Speed * deltaTime;
 			if (direction == Camera_movement::FORWARD)
-				m_Position -= m_Front * velocity;
-			if (direction == Camera_movement::BACKWARD)
 				m_Position += m_Front * velocity;
+			if (direction == Camera_movement::BACKWARD)
+				m_Position -= m_Front * velocity;
 			if (direction == Camera_movement::LEFT)
-				m_Position += m_Right * velocity;
-			if (direction == Camera_movement::RIGHT)
 				m_Position -= m_Right * velocity;
+			if (direction == Camera_movement::RIGHT)
+				m_Position += m_Right * velocity;
 		}
 
 		void processMouseMovement(float xoffset, float yoffset, bool constrainPitch = true) {
