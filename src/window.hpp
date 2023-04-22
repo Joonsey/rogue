@@ -48,6 +48,12 @@ namespace window {
 					camera.processKeyboard(Camera_movement::LEFT, delta_time);
 				if (glfwGetKey(nativewindow, GLFW_KEY_D) == GLFW_PRESS)
 					camera.processKeyboard(Camera_movement::RIGHT, delta_time);
+
+
+				if (glfwGetKey(nativewindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+				{
+					glfwSetWindowShouldClose(nativewindow, 1);
+				}
 			}
 
 			position get_mouse_delta() {
