@@ -37,17 +37,17 @@ int main()
 
 	window.set_resize_callback(framebuffer_size_callback);
 
-	Rectangle rect(
+	shape::Rectangle rect(
 			glm::vec2(0.5f, 0.5f),
 			glm::vec2(0.5f, 0.5f),
 			glm::vec3(1.0f, 0.0f, 0.0f));
 
-	Cube cube(
+	shape::Cube cube(
 			glm::vec3(-0.5f, -0.5f, -1.f),
 			1.f,
 			glm::vec3(0.0f, 2.0f, 1.0f));
 
-	Cube cube2(
+	shape::Cube cube2(
 			glm::vec3(0.5f, 0.5f, -1.f),
 			1.f,
 			glm::vec3(0.0f, 2.0f, 1.0f));
