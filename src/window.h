@@ -47,9 +47,14 @@ namespace window {
 					camera.processKeyboard(Camera_movement::LEFT, delta_time);
 				if (glfwGetKey(nativewindow, GLFW_KEY_D) == GLFW_PRESS)
 					camera.processKeyboard(Camera_movement::RIGHT, delta_time);
+				if (glfwGetKey(nativewindow, GLFW_KEY_SPACE) == GLFW_PRESS)
+					camera.processKeyboard(Camera_movement::UP, delta_time);
+				if (glfwGetKey(nativewindow, GLFW_KEY_C) == GLFW_PRESS)
+					camera.processKeyboard(Camera_movement::DOWN, delta_time);
 
 
-				if (glfwGetKey(nativewindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+				if (glfwGetKey(nativewindow, GLFW_KEY_ESCAPE) == GLFW_PRESS ||
+					glfwGetKey(nativewindow, GLFW_KEY_CAPS_LOCK) == GLFW_PRESS)
 				{
 					glfwSetWindowShouldClose(nativewindow, 1);
 				}

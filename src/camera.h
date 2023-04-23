@@ -12,7 +12,9 @@ namespace camera {
 		FORWARD,
 		BACKWARD,
 		LEFT,
-		RIGHT
+		RIGHT,
+		UP,
+		DOWN
 	};
 
 	class Camera {
@@ -40,6 +42,13 @@ namespace camera {
 				m_Position -= m_Right * velocity;
 			if (direction == Camera_movement::RIGHT)
 				m_Position += m_Right * velocity;
+
+			// m_WorldUp is absolute up
+			// m_Up is relative up
+			if (direction == Camera_movement::UP)
+				m_Position += m_WorldUp * velocity;
+			if (direction == Camera_movement::DOWN)
+				m_Position -= m_WorldUp * velocity;
 		}
 
 		void processMouseMovement(float xoffset, float yoffset, bool constrainPitch = true) {

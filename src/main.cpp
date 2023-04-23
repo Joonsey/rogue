@@ -7,7 +7,7 @@
 #include "shader.h"
 #include "rectangle.h"
 #include "cube.h"
-#include "window.hpp"
+#include "window.h"
 #include "camera.h"
 
 #define WIDTH 800
