@@ -9,6 +9,8 @@
 #include "cube.h"
 #include "window.h"
 #include "camera.h"
+#include "entity_manager.h"
+#include "entity.h"
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -37,21 +39,14 @@ int main()
 
 	window.set_resize_callback(framebuffer_size_callback);
 
-	shape::Rectangle rect(
-			glm::vec2(0.5f, 0.5f),
-			glm::vec2(0.5f, 0.5f),
-			glm::vec3(1.0f, 0.0f, 0.0f));
-
+	EM::EntityManager entity_manager;
 	shape::Cube cube(
 			glm::vec3(-0.5f, -0.5f, -1.f),
 			1.f,
 			glm::vec3(0.0f, 2.0f, 1.0f));
 
-	shape::Cube cube2(
-			glm::vec3(0.5f, 0.5f, -1.f),
-			1.f,
-			glm::vec3(0.0f, 2.0f, 1.0f));
-
+	entities::Entity entity(&cube);
+	entity_manager.add_entity(entity);
 
 	glEnable(GL_DEPTH_TEST);
 	while(!glfwWindowShouldClose(window.nativewindow))
@@ -67,9 +62,7 @@ int main()
 		shaderProgram.setMat4f("model", model);
 		window.process_input(camera, window.deltatime());
 
-		rect.render();
-		cube.render();
-		cube2.render();
+		entity_manager.render_entites();
 
 		glfwSwapBuffers(window.nativewindow);
 
