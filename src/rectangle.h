@@ -6,7 +6,7 @@
 
 namespace shape
 {
-	class Rectangle : Shape {
+	class Rectangle : public Shape {
 	public:
 		// Constructor
 		Rectangle(glm::vec2 position, glm::vec2 size, glm::vec3 color)

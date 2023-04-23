@@ -1,3 +1,4 @@
+#pragma once
 #include "../include/glad/glad.h"
 #include "../include/glm/glm.hpp"
 #include "../include/glm/ext.hpp"
@@ -7,7 +8,7 @@
 namespace shape
 {
 
-	class Cube : Shape
+	class Cube : public Shape
 	{
 		public:
 			Cube(const glm::vec3& position, float size, const glm::vec3& color)
