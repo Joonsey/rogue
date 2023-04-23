@@ -67,9 +67,9 @@ int main()
 		shaderProgram.setMat4f("model", model);
 		window.process_input(camera, window.deltatime());
 
-		rect.Render();
-		cube.Render();
-		cube2.Render();
+		rect.render();
+		cube.render();
+		cube2.render();
 
 		glfwSwapBuffers(window.nativewindow);
 

@@ -1,10 +1,12 @@
+#pragma once
 #include "../include/glad/glad.h"
 #include "../include/glm/glm.hpp"
+#include "shape.h"
 
 
 namespace shape
 {
-	class Rectangle {
+	class Rectangle : Shape {
 	public:
 		// Constructor
 		Rectangle(glm::vec2 position, glm::vec2 size, glm::vec3 color)
@@ -51,7 +53,7 @@ namespace shape
 		}
 
 		// Render function
-		void Render()
+		void render() override
 		{
 			// Bind VAO
 			glBindVertexArray(m_VAO);

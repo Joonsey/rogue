@@ -2,11 +2,12 @@
 #include "../include/glm/glm.hpp"
 #include "../include/glm/ext.hpp"
 #include "shader.h"
+#include "shape.h"
 
 namespace shape
 {
 
-	class Cube
+	class Cube : Shape
 	{
 		public:
 			Cube(const glm::vec3& position, float size, const glm::vec3& color)
@@ -82,7 +83,7 @@ namespace shape
 				glDeleteBuffers(1, &m_VBO);
 				glDeleteVertexArrays(1, &m_VAO);
 			}
-			void Render()
+			void render() override
 			{
 				// Bind VAO
 				glBindVertexArray(m_VAO);
