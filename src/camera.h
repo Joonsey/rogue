@@ -19,6 +19,7 @@ namespace camera {
 
 	class Camera {
 	public:
+		bool freecam = true;
 		Camera(
 				const glm::vec3& position = glm::vec3(0.0f, 0.0f, 3.0f),
 				const glm::vec3& up = glm::vec3(0.0f, 1.0f, 0.0f),
@@ -33,6 +34,7 @@ namespace camera {
 		}
 
 		void processKeyboard(Camera_movement direction, float deltaTime) {
+
 			float velocity = m_Speed * deltaTime;
 			if (direction == Camera_movement::FORWARD)
 				m_Position += m_Front * velocity;
@@ -52,6 +54,8 @@ namespace camera {
 		}
 
 		void processMouseMovement(float xoffset, float yoffset, bool constrainPitch = true) {
+			if (!freecam) return;
+
 			xoffset *= m_Sensitivity;
 			yoffset *= m_Sensitivity;
 

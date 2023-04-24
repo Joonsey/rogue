@@ -48,6 +48,8 @@ int main()
 	entities::Entity entity(&cube);
 	entity_manager.add_entity(entity);
 
+	camera.freecam = false;
+
 	glEnable(GL_DEPTH_TEST);
 	while(!glfwWindowShouldClose(window.nativewindow))
 	{

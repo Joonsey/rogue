@@ -55,9 +55,15 @@ namespace window {
 
 				if (glfwGetKey(nativewindow, GLFW_KEY_ESCAPE) == GLFW_PRESS ||
 					glfwGetKey(nativewindow, GLFW_KEY_CAPS_LOCK) == GLFW_PRESS)
-				{
 					glfwSetWindowShouldClose(nativewindow, 1);
-				}
+
+				// Debug controls
+				if (glfwGetKey(nativewindow, GLFW_KEY_F3) == GLFW_PRESS)
+					camera.freecam = true;
+
+				if (glfwGetKey(nativewindow, GLFW_KEY_F4) == GLFW_PRESS)
+					camera.freecam = false;
+
 			}
 
 			position get_mouse_delta() {
