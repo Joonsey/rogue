@@ -11,6 +11,8 @@
 #include "camera.h"
 #include "entity_manager.h"
 #include "entity.h"
+#include "map.h"
+#include "tile.h"
 
 #define WIDTH 800
 #define HEIGHT 600
@@ -39,14 +41,16 @@ int main()
 
 	window.set_resize_callback(framebuffer_size_callback);
 
+	world::Map world_map;
 	EM::EntityManager entity_manager;
-	shape::Cube cube(
-			glm::vec3(-0.5f, -0.5f, -1.f),
-			1.f,
-			glm::vec3(0.0f, 2.0f, 1.0f));
 
-	entities::Entity entity(&cube);
-	entity_manager.add_entity(entity);
+	std::vector<glm::vec3> world_data = {
+		{1, 1, 1},
+		{2, 1, 1},
+		{2, 2, 1}
+	};
+
+	world_map.seed_world(world_data);
 
 	camera.freecam = false;
 
@@ -64,7 +68,9 @@ int main()
 		shaderProgram.setMat4f("model", model);
 		window.process_input(camera, window.deltatime());
 
+		world_map.render_tiles();
 		entity_manager.render_entites();
+
 
 		glfwSwapBuffers(window.nativewindow);
 
