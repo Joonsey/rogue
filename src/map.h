@@ -5,6 +5,8 @@
 
 namespace world
 {
+
+	typedef std::vector<glm::vec3> MAP_DATA;
 	class Map
 	{
 		public:
@@ -14,14 +16,14 @@ namespace world
 				for (auto tile : m_tiles)
 					tile.render();
 			}
-			void add_tile(world::Tile &tile)
+			void add_tile(Tile &tile)
 			{
 				m_tiles.push_back(tile);
 			}
 			// seeds the map with world data.
 			// expected format is: [X, Y, Z]
 			// will create cubes in the specified locations
-			void seed_world(std::vector<glm::vec3> &world_data)
+			void seed_world(MAP_DATA &world_data)
 			{
 				for (auto position : world_data)
 				{
@@ -37,7 +39,7 @@ namespace world
 			}
 
 		private:
-			std::vector<world::Tile> m_tiles;
+			std::vector<Tile> m_tiles;
 	};
 
 }

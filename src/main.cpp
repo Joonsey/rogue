@@ -44,7 +44,7 @@ int main()
 	world::Map world_map;
 	EM::EntityManager entity_manager;
 
-	std::vector<glm::vec3> world_data = {
+	world::MAP_DATA world_data = {
 		{1, 1, 1},
 		{2, 1, 1},
 		{2, 2, 1}
