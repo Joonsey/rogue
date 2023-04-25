@@ -6,5 +6,6 @@ namespace shape
 	{;
 		public:
 			virtual void render() = 0;
+			virtual ~Shape(){};
 	};
 };
