@@ -1,6 +1,7 @@
 #pragma once
 #include "tile.h"
 #include <vector>
+#include <algorithm>
 #include "cube.h"
 
 namespace world
@@ -19,6 +20,22 @@ namespace world
 			void add_tile(Tile &tile)
 			{
 				m_tiles.push_back(tile);
+			}
+			void remove_tile(Tile tile)
+			{
+				auto v = m_tiles;
+				auto it = std::find(v.begin(), v.end(), tile);
+				if (it != v.end()) {
+					v.erase(it);
+				}
+			}
+			bool contains_tile(Tile tile)
+			{
+				for (auto _tile : m_tiles)
+					if (_tile == tile)
+						return true;
+
+				return false;
 			}
 			// seeds the map with world data.
 			// expected format is: [X, Y, Z]
