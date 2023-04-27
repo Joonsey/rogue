@@ -37,7 +37,11 @@ int main()
 
 	window::Window window(WIDTH, HEIGHT, "rogue");
 	shader::Shader shaderProgram("src/shaders/vertex.glsl","src/shaders/fragment.glsl");
-	camera::Camera camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), -90.0f, 0.0f);
+	camera::Camera camera(
+			glm::vec3(0.0f, 3.0f, 0.0f),
+			glm::vec3(0.0f, 1.0f, 0.0f),
+			-90.0f,
+			-45.0f);
 
 	window.set_resize_callback(framebuffer_size_callback);
 
